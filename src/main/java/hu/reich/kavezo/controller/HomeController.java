@@ -24,7 +24,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String home(Model model) {
-        model.addAttribute("cafeName", "Kávézó Neve");
+        model.addAttribute("cafeName", "Kávézó");
         model.addAttribute("slogan", "Ahol minden csésze egy élmény");
         model.addAttribute("products", productService.findAll());
         model.addAttribute("orders", orderService.findAll());
