@@ -18,11 +18,55 @@
         <p>Frissen pörkölt kávé • Házi sütemények • Barátságos környezet</p>
     </section>
 
-    <section>
-            <h2>Üdvözöljük a Kávézóban!</h2>
-            <p>Frissen pörkölt kávé • Házi sütemények • Barátságos környezet</p>
-        </section>
+    <!-- Új rendelés űrlap -->
+    <section class="order-form">
+        <h2>Új rendelés felvétele</h2>
+        <form th:action="@{/add-order}" method="post">
+            <div class="form-group">
+                <label for="customerName">Vendég neve:</label>
+                <input type="text" id="customerName" name="customerName" required placeholder="pl. Kovács Anna">
+            </div>
 
+            <div class="form-group">
+                <label>Válassz termékeket:</label>
+                <div th:each="product : ${products}" style="margin: 8px 0;">
+                    <input type="checkbox"
+                           th:id="${'prod_' + product.id}"
+                           th:name="productIds"
+                           th:value="${product.id}" />
+                    <label th:for="${'prod_' + product.id}"
+                           th:text="${product.name + ' - ' + product.price + ' Ft'}"></label>
+                </div>
+            </div>
+
+            <button type="submit" class="btn">Rendelés mentése</button>
+        </form>
+    </section>
+
+    <!-- Rendelések listája -->
+    <section class="orders-list">
+        <h2>Ma felvett rendelések</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Név</th>
+                <th>Termékek</th>
+                <th>Összeg</th>
+                <th>Időpont</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="order : ${orders}">
+                <td th:text="${order.id}"></td>
+                <td th:text="${order.customerName}"></td>
+                <td th:text="${order.products.![name]}"></td>
+                <td th:text="${order.totalPrice} + ' Ft'"></td>
+                <td th:text="${order.orderTime != null ? #temporals.format(order.orderTime, 'yyyy-MM-dd HH:mm') : ''}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
 
 
     <section>
