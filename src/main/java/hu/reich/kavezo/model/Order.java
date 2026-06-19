@@ -30,4 +30,20 @@ public class Order {
     public Order() {
         this.orderTime = LocalDateTime.now();
     }
+
+    // Getters & Setters
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+
+    public String getCustomerName() { return customerName; }
+    public void setCustomerName(String customerName) { this.customerName = customerName; }
+
+    public List<Product> getProducts() { return products; }
+    public void setProducts(List<Product> products) { this.products = products; }
+
+    public double getTotalPrice() { return totalPrice; }
+    public void setTotalPrice(double price) { this.totalPrice = price; }
+
+    public LocalDateTime getOrderTime() { return orderTime; }
+    public void setOrderTime(LocalDateTime orderTime) { this.orderTime = orderTime; }
 }
