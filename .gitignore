@@ -1,8 +1,10 @@
+### Maven ###
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
 .kotlin
+*.jar
 
 ### IntelliJ IDEA ###
 .idea/
@@ -35,5 +37,5 @@ build/
 ### Mac OS ###
 .DS_Store
 
-# H2 DataBase
+### H2 DataBase ###
 data/
