@@ -31,4 +31,15 @@ public class HomeController {
         model.addAttribute("orders", orderService.findAll());
         return "index";
     }
+
+    @PostMapping("/add-order")
+    public String addOrder(@RequestParam String customerName,
+                           @RequestParam List<Long> productIds) {
+        List<Product> selectedProducts = productService.findAll().stream()
+                .filter(p -> productIds.contains(p.getId()))
+                .toList();
+
+        orderService.saveOrder(customerName, selectedProducts);
+        return "redirect:/";
+    }
 }
