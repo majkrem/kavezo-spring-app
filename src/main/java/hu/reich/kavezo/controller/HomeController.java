@@ -1,6 +1,5 @@
 package hu.reich.kavezo.controller;
 
-import hu.reich.kavezo.model.Order;
 import hu.reich.kavezo.model.Product;
 import hu.reich.kavezo.service.OrderService;
 import hu.reich.kavezo.service.ProductService;
