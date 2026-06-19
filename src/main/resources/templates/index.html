@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="hu" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${cafeName}"></title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<header>
+    <h1 th:text="${cafeName}"></h1>
+    <p th:text="${slogan}"></p>
+</header>
+
+<main>
+    <section>
+        <h2>Üdvözöljük!</h2>
+        <p>Frissen pörkölt kávé • Házi sütemények • Barátságos környezet</p>
+    </section>
+
+    <section>
+            <h2>Üdvözöljük a Kávézóban!</h2>
+            <p>Frissen pörkölt kávé • Házi sütemények • Barátságos környezet</p>
+        </section>
+
+
+
+    <section>
+        <h3>Nyitvatartás</h3>
+        <p>Hétfő–Péntek: 7:00 – 19:00<br>
+            Szombat–Vasárnap: 8:00 – 18:00</p>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2026 <span th:text="${cafeName}"></span> • Minden jog fenntartva</p>
+</footer>
+</body>
+</html>
