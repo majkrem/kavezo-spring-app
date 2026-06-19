@@ -1,5 +1,6 @@
 package hu.reich.kavezo.service;
 
+import hu.reich.kavezo.model.Order;
 import hu.reich.kavezo.model.Product;
 import hu.reich.kavezo.repository.OrderRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -45,5 +46,22 @@ class OrderServiceTest {
         assertEquals(1580.0, order.getTotalPrice(), 0.01);
         assertEquals(2, order.getProducts().size());
         verify(orderRepository, times(1)).save(any());
+    }
+
+    @Test
+    void findAll_shouldReturnAllOrders() {
+        // Arrange (előkészítés)
+        List<Order> orders = List.of(
+                new Order(),
+                new Order()
+        );
+        when(orderRepository.findAll()).thenReturn(orders);
+
+        // Act (végrehajtás)
+        List<Order> result = orderService.findAll();
+
+        // Assert (ellenőrzés)
+        assertEquals(2, result.size());
+        verify(orderRepository, times(1)).findAll();
     }
 }

@@ -34,4 +34,26 @@ class ProductServiceTest {
         assertEquals(1, result.size());
         verify(productRepository, times(1)).findAll();
     }
+
+    @Test
+    void deleteById_shouldCallRepositoryDelete() {
+        Long id = 5L;
+        doNothing().when(productRepository).deleteById(id);
+
+        productService.deleteById(id);
+
+        verify(productRepository, times(1)).deleteById(id);
+    }
+
+    @Test
+    void save_shouldSaveAndReturnProduct() {
+        Product productToSave = new Product("Latte", "Kávé tejjel", 1390, "Kávé");
+        when(productRepository.save(any(Product.class))).thenReturn(productToSave);
+
+        Product result = productService.save(productToSave);
+
+        assertNotNull(result);
+        assertEquals("Latte", result.getName());
+        verify(productRepository, times(1)).save(productToSave);
+    }
 }
